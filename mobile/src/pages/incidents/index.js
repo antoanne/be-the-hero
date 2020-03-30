@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
-import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, StatusBar } from 'react-native';
 
 import api from '../../services/api';
 
@@ -11,6 +11,7 @@ import logoImg from '../../assets/logo.png';
 
 export default function Incidents() {
   const navigation = useNavigation();
+
   const [incidents, setIncidents] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
@@ -43,6 +44,7 @@ export default function Incidents() {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle='dark-content' />
       <View style={styles.header}>
         <Image source={logoImg} />
         <Text style={styles.headerText}>Total de <Text style={styles.headerTextBold}>{total}</Text> casos</Text>
@@ -78,10 +80,7 @@ export default function Incidents() {
 
         )}
       />
-
-      
     </View>
-
   );
 }
   
